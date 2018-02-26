@@ -15,7 +15,6 @@ import co.id.memorize.repository.film.FilmDataSource;
 import co.id.memorize.repository.film.FilmRepository;
 
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 /**
  * Created by eminartiys on 21/02/18.
@@ -56,17 +55,6 @@ public class FilmFeedPresenterTest {
         loadCallbackArgumentCaptor.getValue().onDataLoaded(ITEMS);
 
         verify(view).setItemToView(ITEMS);
-
-    }
-
-    @Test
-    public void loadNoDataToViewTest() {
-        presenter.start();
-        verify(repository).getFilm(loadCallbackArgumentCaptor.capture());
-
-        loadCallbackArgumentCaptor.getValue().onNoDataLoaded();
-
-        verify(view).setNoDataLoadToView();
 
     }
 
